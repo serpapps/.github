@@ -1,7 +1,7 @@
 ![SERP_banner](https://github.com/user-attachments/assets/6da22887-0c34-4e61-aaa7-9624b6319412)
 
 
-This is the official area for SERP's software products with a dedicated repository for each of our applications.
+This is the official area for [SERP](https://serp.co/) software product releases with a dedicated repository for each of our applications.
 
 Each product has it's own [repository](https://github.com/orgs/serpapps/repositories) for any:
 
