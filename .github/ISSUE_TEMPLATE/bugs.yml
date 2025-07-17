@@ -1,0 +1,17 @@
+name: "Bugs"
+description: "Report a bug"
+labels: "bug"
+projects: "serpapps/1"
+type: Bug
+
+body:
+  - type: dropdown
+    id: download
+    attributes:
+      label: What OS are you using?
+      options:
+        - Mac
+        - Windows
+        - Linux
+      validations:
+        required: true
