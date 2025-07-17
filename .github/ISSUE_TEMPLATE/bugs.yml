@@ -5,13 +5,35 @@ projects: "serpapps/1"
 type: Bug
 
 body:
-  - type: dropdown
-    id: download
+  - type: checkboxes
+    id: faq-check
     attributes:
-      label: What OS are you using?
+      label: Prerequisites
+      description: Please check the following before submitting a bug report
       options:
-        - Mac
-        - Windows
-        - Linux
+        - label: I have checked the [FAQs](https://github.com/orgs/serpapps/discussions/categories/faq) for an existing solution before submitting this as a bug.
+          required: true
+    
+  - type: dropdown
+    id: browser
+    attributes:
+      label: What browser are you using?
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Arc
+        - Internet explorer
+        - Other
     validations:
       required: true
+        
+  - type: textarea
+    attributes:
+      description: |
+        Plesae explain the issue you're having. 
+        The more details you give, the easier it is for us to fix it.
+    validations:
+      required: true
+        
+  
