@@ -5,13 +5,18 @@ projects: "serpapps/1"
 type: Bug
 
 body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Prerequisites
+        Before submitting a bug report, please check our [FAQs](https://github.com/orgs/serpapps/discussions/categories/faq) for existing solutions.
+  
   - type: checkboxes
     id: faq-check
     attributes:
-      label: Prerequisites
-      description: Please check the following before submitting a bug report
+      label: Confirmation
       options:
-        - label: I have checked the [FAQs](https://github.com/orgs/serpapps/discussions/categories/faq) for an existing solution before submitting this as a bug.
+        - label: I have checked the FAQs for an existing solution before submitting this as a bug.
           required: true
     
   - type: dropdown
