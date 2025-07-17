@@ -13,5 +13,5 @@ body:
         - Mac
         - Windows
         - Linux
-      validations:
-        required: true
+    validations:
+      required: true
