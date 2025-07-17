@@ -15,6 +15,17 @@ body:
           required: true
     
   - type: dropdown
+    id: os
+    attributes:
+      label: What OS (Operating System) are you using?
+      options:
+        - Mac
+        - Windows
+        - Linux
+    validations:
+      required: true
+      
+  - type: dropdown
     id: browser
     attributes:
       label: What browser are you using?
@@ -23,17 +34,17 @@ body:
         - Firefox
         - Safari
         - Arc
-        - Internet explorer
+        - Internet Explorer
         - Other
     validations:
       required: true
         
   - type: textarea
+    id: bug-description
     attributes:
+      label: Bug Description
       description: |
-        Plesae explain the issue you're having. 
+        Please explain the issue you're having. 
         The more details you give, the easier it is for us to fix it.
     validations:
       required: true
-        
-  
