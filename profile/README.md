@@ -12,3 +12,8 @@ Each product has it's own [repository](https://github.com/orgs/serpapps/reposito
 We also have a free community you can join to connect with the SERP team, other users ,discuss features, share tips, etc.
 
 - [SERP University](https://serp.ly/@serp/community)
+
+## Apps
+
+- [Skool Video Downloader](https://github.com/serpapps/skool-downloader)
+- [Vimeo Video Downloader](https://github.com/serpapps/vimeo-video-downloader)
