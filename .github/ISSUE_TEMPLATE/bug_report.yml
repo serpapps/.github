@@ -9,7 +9,8 @@ body:
     attributes:
       value: |
         ## Prerequisites
-        Before submitting a bug report, please check our [FAQs](https://github.com/orgs/serpapps/discussions/categories/faq) for existing solutions.
+        1. Please check the [FAQs](https://github.com/orgs/serpapps/discussions/categories/faq) for existing solutions before submitting a Bug report.
+        2. Please [star the repo](https://share.zight.com/5zuq7eNP) ⭐
   
   - type: checkboxes
     id: faq-check
