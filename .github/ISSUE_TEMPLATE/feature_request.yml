@@ -5,6 +5,12 @@ title: "[FEAT]: "
 labels: ["enhancement", "triage"]
 
 body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Prerequisites
+        1. Please [star the repo ⭐](https://raw.githubusercontent.com/serpapps/.github/refs/heads/main/images/star-repo.gif)
+
   - type: textarea
     id: description
 
