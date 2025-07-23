@@ -1,0 +1,20 @@
+name: Feature Request 🙏
+description: >
+  Request a new feature or improvement to existing functionality
+title: "[FEAT]: "
+labels: ["enhancement", "triage"]
+
+body:
+  - type: textarea
+    id: description
+
+    attributes:
+      label: Description
+      description: "Use this area to describe the new feature or enhancement you'd like to see."
+      placeholder: |
+        Example feature request for an app that allows you to download a video on a website:
+        
+        "As a user, I would like the option to download all of the videos on a webpage that has multiple videos,
+        to save time & energy from having to do them one-by-one"
+    validations:
+      required: true
