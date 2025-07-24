@@ -4,7 +4,7 @@ labels: "bug"
 projects: "serpapps/1"
 type: Bug
 
-- type: markdown
+  - type: markdown
     attributes:
       value: "[Star the repo ⭐](https://raw.githubusercontent.com/serpapps/.github/refs/heads/main/images/star-repo.gif)"
   
