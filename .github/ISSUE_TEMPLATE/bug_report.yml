@@ -2,11 +2,13 @@ name: "Bug Report 🐛"
 description: "Report a bug"
 labels: ["bug"]
 projects: ["serpapps/1"]
+type: Bug
+
 body:
   - type: markdown
     attributes:
       value: |
-        [Star the repo ⭐](https://raw.githubusercontent.com/serpapps/.github/refs/heads/main/images/star-repo.gif)
+        # 1. [Star the repo ⭐](https://raw.githubusercontent.com/serpapps/.github/refs/heads/main/images/star-repo.gif)
   
   - type: checkboxes
     id: faq-check
