@@ -3,11 +3,10 @@ description: "Report a bug"
 labels: "bug"
 projects: "serpapps/1"
 type: Bug
-
 body:
   - type: markdown
     attributes:
-      value: [Star the repo ⭐](https://raw.githubusercontent.com/serpapps/.github/refs/heads/main/images/star-repo.gif)
+      value: "[Star the repo ⭐](https://raw.githubusercontent.com/serpapps/.github/refs/heads/main/images/star-repo.gif)"
   
   - type: checkboxes
     id: faq-check
@@ -41,7 +40,7 @@ body:
         - Other
     validations:
       required: true
-
+      
   - type: input
     id: webpage
     attributes:
@@ -49,8 +48,8 @@ body:
       placeholder: https://somewebsite.com/blog/a-post-with-a-cool-video
     validations:
       required: true
-
-    - type: input
+      
+  - type: input
     id: video
     attributes:
       label: What is the URL of the video you are trying to download?
