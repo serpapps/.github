@@ -8,15 +8,12 @@ body:
   - type: markdown
     attributes:
       value: |
-        ### 1. [Star the repo ⭐](https://raw.githubusercontent.com/serpapps/.github/refs/heads/main/images/star-repo.gif)
-  
-  - type: checkboxes
-    id: faq-check
+        ### Step 1. [Star the repo ⭐](https://raw.githubusercontent.com/serpapps/.github/refs/heads/main/images/star-repo.gif)
+
+ - type: markdown
     attributes:
-      label: FAQs
-      options:
-        - label: I have checked the FAQs (https://github.com/orgs/serpapps/discussions/categories/faq) for an existing solution before submitting this as a bug.
-          required: true
+      value: |
+        ### Step 2. Check the [FAQs](https://github.com/orgs/serpapps/discussions/categories/faq) before submitting a bug
     
   - type: dropdown
     id: os
