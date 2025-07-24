@@ -7,17 +7,14 @@ type: Bug
 body:
   - type: markdown
     attributes:
-      value: |
-        ## Prerequisites
-        1. Please [star the repo ⭐](https://raw.githubusercontent.com/serpapps/.github/refs/heads/main/images/star-repo.gif)
-        2. Please [check the FAQs](https://github.com/orgs/serpapps/discussions/categories/faq) for existing solutions before submitting a Bug report.
+      value: [Star the repo ⭐](https://raw.githubusercontent.com/serpapps/.github/refs/heads/main/images/star-repo.gif)
   
   - type: checkboxes
     id: faq-check
     attributes:
-      label: Confirmation
+      label: FAQs
       options:
-        - label: I have checked the FAQs for an existing solution before submitting this as a bug.
+        - label: I have checked the FAQs (https://github.com/orgs/serpapps/discussions/categories/faq) for an existing solution before submitting this as a bug.
           required: true
     
   - type: dropdown
@@ -44,13 +41,28 @@ body:
         - Other
     validations:
       required: true
+
+  - type: input
+    id: webpage
+    attributes:
+      label: What URL (webpage) are you trying to download from?
+      placeholder: https://somewebsite.com/blog/a-post-with-a-cool-video
+    validations:
+      required: true
+
+    - type: input
+    id: video
+    attributes:
+      label: What is the URL of the video you are trying to download?
+      placeholder: https://www.loom.com/share/b19b38d0ce2b44f5a049b871d9a38925
+    validations:
+      required: true
         
   - type: textarea
-    id: bug-description
+    id: error-message
     attributes:
-      label: Bug Description
+      label: Error Message
       description: |
-        Please explain the issue you're having. 
-        The more details you give, the easier it is for us to fix it.
+        Please paste the error message you are receiving
     validations:
       required: true
