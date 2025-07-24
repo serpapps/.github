@@ -6,7 +6,8 @@ type: Bug
 body:
   - type: markdown
     attributes:
-      value: "[Star the repo ⭐](https://raw.githubusercontent.com/serpapps/.github/refs/heads/main/images/star-repo.gif)"
+      value: |
+      ## Step 1: "[Star the repo ⭐](https://raw.githubusercontent.com/serpapps/.github/refs/heads/main/images/star-repo.gif)"
   
   - type: checkboxes
     id: faq-check
