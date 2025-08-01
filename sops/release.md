@@ -47,10 +47,11 @@ git push origin vX.X.X
 ### 4. Package Release Assets
 
 **For Chrome Extensions:**
+
 ```bash
 cd src/[extension-folder]
-zip -r ../../[extension-name]-vX.X.X.zip . -x "*.DS_Store"
-cd ../..
+zip -r ../../[extension-name].zip . -x "*.DS_Store"
+mv [extension-name].zip [extension-name]-vX.X.X.zip
 ```
 
 **For other projects:**
@@ -61,10 +62,12 @@ Follow the project-specific build/packaging process.
 1. Go to `https://github.com/serpapps/[repository-name]/releases/new`
 2. Select the tag you just created (vX.X.X)
 3. Set release title as "vX.X.X" or "vX.X.X - [Brief Description]"
-4. Add release notes (see template below)
-5. Upload any release assets (zip files, binaries, etc.)
-6. Publish the release
+4. Generate release notes
+5. Add release notes (see template below)
+6. Upload any release assets (zip files, binaries, etc.)
+7. Publish the release
 
+---
 
 ## Release Notes Template
 
