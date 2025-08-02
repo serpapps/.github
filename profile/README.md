@@ -13,23 +13,12 @@ We also have a free community you can join to connect with the SERP team, other 
 
 - [SERP University](https://serp.ly/@serp/community)
 
-
 ## 🔗 LINKS
 
 - 💬 [SERP University Community](https://serp.ly/@serp/community)
 - 💌 [Newsletter](https://serp.ly/@serp/email)
 - 🛒 [Shop](https://serp.ly/@serp/stuff)
 - 🎓 [Courses](https://serp.ly/@serp/courses)
-
-## 🎁 PRODUCTS
-
-- 📕 [10x w/ FREE Traffic (SEO Secrets from $200M+ Sales)](https://serp.ly/@serp/seo-ebook)
-
-## 🧑‍🏫 COURSES 
-
-- 🧑‍🏫 [SEO Content Writing Mastery](https://serp.ly/@serp/course/seo-content-writing-mastery)
-- 🧑‍🏫 [Dream Customers - Crafting Buyer Personas](https://serp.ly/@serp/course/dream-customers)
-- 🧑‍🏫 [Learn Command Line](https://serp.ly/learn-command-line-course)
 
 ## 🤖 APPS
 
@@ -38,3 +27,4 @@ We also have a free community you can join to connect with the SERP team, other 
 - [Vimeo Video Downloader](https://github.com/serpapps/vimeo-video-downloader)
 - [Udemy Video Downloader](https://github.com/serpapps/udemy-video-downloader)
 - [Tiktok Downloader](https://github.com/serpapps/tiktok-downloader)
+
