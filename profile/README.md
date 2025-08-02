@@ -36,3 +36,5 @@ We also have a free community you can join to connect with the SERP team, other 
 - [Loom Video Downloader](https://github.com/serpapps/loom-video-downloader)
 - [Skool Video Downloader](https://github.com/serpapps/skool-downloader)
 - [Vimeo Video Downloader](https://github.com/serpapps/vimeo-video-downloader)
+- [Udemy Video Downloader](https://github.com/serpapps/udemy-video-downloader)
+- [Tiktok Downloader](https://github.com/serpapps/tiktok-downloader)
