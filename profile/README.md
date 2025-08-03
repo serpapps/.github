@@ -9,13 +9,13 @@ Each product has it's own [repository](https://github.com/orgs/serpapps/reposito
 3. **WIKI**: Relevant documentation, setup instructions, FAQs, etc.
 4. **PROJECTS**: Track development progress, view roadmaps, and see what features are currently being worked on.
 
-We also have a free community you can join to connect with the SERP team, other users ,discuss features, share tips, etc.
+There is also a [DISCUSSIONS](https://github.com/orgs/serpapps/discussions) area that contains general information like [FAQs](https://github.com/orgs/serpapps/discussions/categories/faq), [Tips](https://github.com/orgs/serpapps/discussions/categories/tips), etc.
 
-- [SERP University](https://serp.ly/@serp/community)
+We also have a free community ([SERP University](https://serp.ly/@serp/community)) you can join to connect with the team, explore other content, and get updates/announcements on all our stuffs.
 
 ## 🔗 LINKS
 
-- 💬 [SERP University Community](https://serp.ly/@serp/community)
+- 💬 [SERP University](https://serp.ly/@serp/community)
 - 💌 [Newsletter](https://serp.ly/@serp/email)
 - 🛒 [Shop](https://serp.ly/@serp/stuff)
 - 🎓 [Courses](https://serp.ly/@serp/courses)
