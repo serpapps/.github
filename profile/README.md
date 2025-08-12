@@ -25,4 +25,7 @@ We also have a free community ([SERP University](https://serp.ly/@serp/community
 - [Tiktok Downloader](https://github.com/serpapps/tiktok-downloader)
 - [Vimeo Video Downloader](https://github.com/serpapps/vimeo-video-downloader)
 - [Udemy Video Downloader](https://github.com/serpapps/udemy-video-downloader)
+- [Pornhub Video Downloader](https://github.com/serpapps/pornhub-video-downloader)
+- [Wistia Video Downloader](https://github.com/serpapps/wistia-video-downloader)
+- [Sprout Video Downloader](https://github.com/serpapps/sprout-video-downloader)
 
