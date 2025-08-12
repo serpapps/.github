@@ -6,7 +6,7 @@ Each product has it's own [repository](https://github.com/orgs/serpapps/reposito
 
 1. **RELEASES**: Download the latest version of the application with a full changelog of the updates & installation instructions or access previous versions.
 2. **PROJECTS**: Follow along with development progress, view roadmaps, and see what features are currently being worked on.
-3.  [Help Center](https://github.com/orgs/serpapps/discussions): [FAQs](https://github.com/orgs/serpapps/discussions/categories/faqs), [Tips](https://github.com/orgs/serpapps/discussions/categories/tips) & instant solutions to common issues so you don't have to wait on a reply from support.
+3. **HELP CENTER**: [FAQs](https://github.com/orgs/serpapps/discussions/categories/faqs), [Tips](https://github.com/orgs/serpapps/discussions/categories/tips) & instant solutions to common issues in the [Help Center](https://github.com/orgs/serpapps/discussions) so you don't have to wait on a reply from support.
 4. **TICKETS**: If you can't find what you need in the [help center](https://github.com/orgs/serpapps/discussions), you can submit a ticket or open a live chat request at our [support portal](https://support.serp.co)
 
 We also have a free community ([SERP University](https://serp.ly/@serp/community)) you can join to connect with the team, explore other content, and get updates/announcements on all our stuffs -- please don't post support requests in here they are too hard to keep track of and reply to.
