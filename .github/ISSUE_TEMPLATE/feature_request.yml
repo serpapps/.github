@@ -1,7 +1,6 @@
 name: Feature
 description: >
   Request a new feature or improvement to existing functionality
-title: "[FEAT]: "
 labels: ["enhancement", "triage"]
 
 body:
