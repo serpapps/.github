@@ -6,18 +6,18 @@ This is the official area for [SERP](https://serp.co/) software product releases
 
 Each product has it's own [repository](https://github.com/orgs/serpapps/repositories) for:
 
-1. **RELEASES**: Download the latest version of the application with a full changelog of the updates & installation instructions or access previous versions.
-2. **PROJECTS**: Follow along with development progress, view roadmaps, and see what features are currently being worked on.
-3. **HELP CENTER**: [FAQs](https://github.com/orgs/serpapps/discussions/categories/faqs), [Tips](https://github.com/orgs/serpapps/discussions/categories/tips) & instant solutions to common issues in the [Help Center](https://github.com/orgs/serpapps/discussions) so you don't have to wait on a reply from support.
-4. **TICKETS**: If you can't find what you need in the [help center](https://github.com/orgs/serpapps/discussions), you can submit a ticket or open a live chat request at our [support portal](https://support.serp.co)
+1. **ISSUES**: Submit any issues related to support questions, bugs and feature suggestions in the `/issues` are of the relevant application's repository.
+2. **RELEASES**: Download the latest version of the application and read the full changelog of updates, or access previous versions.
+3. [**DISCUSSIONS**](https://github.com/orgs/serpapps/discussions): This is the "help center" where you will find answers to [frequently asked questions](https://github.com/orgs/serpapps/discussions/categories/faq), [how-tos](https://github.com/orgs/serpapps/discussions/categories/how-tos) and even [pre-release](https://github.com/orgs/serpapps/discussions/categories/pre-release) versions of apps if you want to try out the next release before it's official.
+4. [**PROJECTS**](https://github.com/orgs/serpapps/projects): Track development progress, view roadmaps, and see what features are currently being worked on.
+5. [**SUPPORT**](https://support.serp.co): If you are having issues installing/using/etc. an application submit a support request (aka ticket) here.
 
-We also have a free community ([SERP University](https://serp.ly/@serp/community)) you can join to connect with the team, explore other content, and get updates/announcements on all our stuffs -- please don't post support requests in here they are too hard to keep track of and reply to.
+We also have a free community called [SERP University](https://serp.ly/@serp/community) you can join to connect with the SERP team, other users, discuss features, share tips, etc. This is not a "support forum" so do not post your support-related questions here.
 
-## 🔗 LINKS
+## 🔗 MORE LINKS
 
-- 💬 [SERP University](https://serp.ly/@serp/community)
-- 💌 [Newsletter](https://serp.ly/@serp/email)
-- 🛒 [Shop](https://serp.ly/@serp/stuff)
+- 💌 [Newsletter](https://serp.ly/@serp/email) - Get email updates on everything
+- 🛒 [Shop](https://serp.ly/@serp/stuff) - Browse stuff to buy
 - 🎓 [Courses](https://serp.ly/@serp/courses)
 
 ## 🤖 APPS
