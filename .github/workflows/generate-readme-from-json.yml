@@ -7,7 +7,7 @@ on:
         description: 'Path to the JSON data file'
         required: false
         type: string
-        default: 'assets/data.json'
+        default: 'data/readme.json'
       json_branch:
         description: 'Branch containing the JSON data file'
         required: false
@@ -22,7 +22,7 @@ on:
         description: 'Branch containing the generator script'
         required: false
         type: string
-        default: 'main'
+        default: 'assets'
       output_filename:
         description: 'Name of the generated README file'
         required: false
@@ -37,7 +37,7 @@ on:
         description: 'Commit message for the generated README'
         required: false
         type: string
-        default: 'Auto-generate README from data.json'
+        default: 'Auto-generate README from data/readme.json'
 
 jobs:
   generate-readme:
@@ -82,7 +82,9 @@ jobs:
           # Create a working directory
           mkdir -p workspace
           
-          # Copy JSON file
+          # Copy JSON file with directory structure
+          JSON_DIR=$(dirname "${{ inputs.json_path }}")
+          mkdir -p workspace/$JSON_DIR
           cp -r json/${{ inputs.json_path }} workspace/${{ inputs.json_path }}
           
           # Copy script and its directory structure
