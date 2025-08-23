@@ -4,7 +4,8 @@ const fs = require('fs');
 const path = require('path');
 
 function generateReadme(data) {
-  const project = data[0];
+  // Handle both single object and array formats
+  const project = Array.isArray(data) ? data[0] : data;
   
   let readme = '';
   
@@ -13,11 +14,13 @@ function generateReadme(data) {
   }
   
   if (project.tagline) {
-    readme += `${project.tagline}\n\n`;
+    readme += `> ${project.tagline}\n\n`;
   }
   
-  if (project.featured_image) {
-    readme += `![${project.name}](${project.featured_image})\n\n`;
+  // Support both featured_image_gif and featured_image
+  const imageToShow = project.featured_image_gif || project.featured_image;
+  if (imageToShow) {
+    readme += `![${project.name}](${imageToShow})\n\n`;
   }
   
   if (project.description) {
@@ -29,9 +32,12 @@ function generateReadme(data) {
     readme += `- 🎁 Get it [here](${project.purchase_url})\n`;
   }
   readme += `- ❓ Check FAQs [here](https://github.com/orgs/serpapps/discussions/categories/faq)\n`;
-  if (project.github_url) {
+  
+  // Support both github_url and github_repo_url
+  const githubUrl = project.github_repo_url || project.github_url;
+  if (githubUrl) {
     // Extract the repo name from github URL (e.g., "serpapps/ai-voice-cloner" from "https://github.com/serpapps/ai-voice-cloner/")
-    const repoPath = project.github_url.replace('https://github.com/', '').replace(/\/$/, '');
+    const repoPath = githubUrl.replace('https://github.com/', '').replace(/\/$/, '');
     readme += `- 🐛 Report bugs [here](https://github.com/${repoPath}/issues)\n`;
     readme += `- 🆕 Request features [here](https://github.com/${repoPath}/issues)\n`;
   }
@@ -122,18 +128,22 @@ function generateReadme(data) {
   }
   
   // More Info section at the bottom
-  const hasMoreInfo = project.github_url || project.main_gist || 
+  const githubRepoUrl = project.github_repo_url || project.github_url;
+  const gistUrl = project.github_gist_url || project.main_gist;
+  
+  const hasMoreInfo = githubRepoUrl || gistUrl || 
     (project.gists && project.gists.length > 0) || 
+    (project.related_gists && project.related_gists.length > 0) ||
     (project.related_articles && project.related_articles.length > 0);
   
   if (hasMoreInfo) {
     readme += `## More Info\n\n`;
     
-    if (project.github_url) {
-      readme += `- 📁 Repository [here](${project.github_url})\n`;
+    if (githubRepoUrl) {
+      readme += `- 📁 Repository [here](${githubRepoUrl})\n`;
     }
-    if (project.main_gist) {
-      readme += `- 📝 Gist [here](${project.main_gist})\n`;
+    if (gistUrl) {
+      readme += `- 📝 Gist [here](${gistUrl})\n`;
     }
     
     if (project.gists && project.gists.length > 0) {
@@ -142,9 +152,21 @@ function generateReadme(data) {
       });
     }
     
+    // Support related_gists as simple array of URLs
+    if (project.related_gists && project.related_gists.length > 0) {
+      project.related_gists.forEach((gistUrl, index) => {
+        readme += `- [Related Gist ${index + 1}](${gistUrl})\n`;
+      });
+    }
+    
     if (project.related_articles && project.related_articles.length > 0) {
-      project.related_articles.forEach(article => {
-        readme += `- [${article.title}](${article.url})\n`;
+      // Handle both object format {title, url} and simple string URLs
+      project.related_articles.forEach((article, index) => {
+        if (typeof article === 'string') {
+          readme += `- [Related Article ${index + 1}](${article})\n`;
+        } else {
+          readme += `- [${article.title}](${article.url})\n`;
+        }
       });
     }
     
@@ -156,19 +178,29 @@ function generateReadme(data) {
 
 function main() {
   try {
-    const jsonPath = path.join(__dirname, '..', 'data.json');
-    const readmePath = path.join(__dirname, '..', 'README.md');
+    // Allow custom paths via command line arguments
+    const jsonPath = process.argv[2] || path.join(__dirname, '..', 'data.json');
+    const readmePath = process.argv[3] || path.join(__dirname, '..', 'README.md');
     
+    // Also check for common alternative paths
+    let actualJsonPath = jsonPath;
     if (!fs.existsSync(jsonPath)) {
-      console.error(`Error: Could not find ${jsonPath}`);
-      process.exit(1);
+      // Try data/readme.json as an alternative
+      const altPath = jsonPath.replace('data.json', 'data/readme.json');
+      if (fs.existsSync(altPath)) {
+        actualJsonPath = altPath;
+      } else {
+        console.error(`Error: Could not find ${jsonPath}`);
+        process.exit(1);
+      }
     }
     
-    const jsonContent = fs.readFileSync(jsonPath, 'utf8');
+    const jsonContent = fs.readFileSync(actualJsonPath, 'utf8');
     const data = JSON.parse(jsonContent);
     
-    if (!Array.isArray(data) || data.length === 0) {
-      console.error('Error: JSON data should be a non-empty array');
+    // Handle both array and single object formats
+    if (!data || (Array.isArray(data) && data.length === 0)) {
+      console.error('Error: JSON data is empty');
       process.exit(1);
     }
     
@@ -176,6 +208,7 @@ function main() {
     
     fs.writeFileSync(readmePath, readmeContent);
     console.log(`✅ README.md has been generated successfully!`);
+    console.log(`📄 Input: ${actualJsonPath}`);
     console.log(`📄 Output: ${readmePath}`);
     
   } catch (error) {
