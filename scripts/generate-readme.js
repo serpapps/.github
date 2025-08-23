@@ -18,9 +18,26 @@ function generateReadme(data) {
   }
   
   // Support both featured_image_gif and featured_image
+  // Convert relative paths to GitHub raw URLs from assets branch
   const imageToShow = project.featured_image_gif || project.featured_image;
   if (imageToShow) {
-    readme += `![${project.name}](${imageToShow})\n\n`;
+    let imageUrl = imageToShow;
+    
+    // If it's a relative path, convert to GitHub raw URL
+    if (!imageToShow.startsWith('http')) {
+      const githubUrl = project.github_repo_url || project.github_url;
+      if (githubUrl) {
+        // Extract org and repo from URL
+        const match = githubUrl.match(/github\.com\/([^\/]+)\/([^\/]+)/);
+        if (match) {
+          const [, org, repo] = match;
+          // Use raw.githubusercontent.com to serve the image from assets branch
+          imageUrl = `https://raw.githubusercontent.com/${org}/${repo}/assets/${imageToShow}`;
+        }
+      }
+    }
+    
+    readme += `![${project.name}](${imageUrl})\n\n`;
   }
   
   if (project.description) {
@@ -28,6 +45,7 @@ function generateReadme(data) {
   }
   
   readme += `## 🔗 Links\n\n`;
+  // Always use serply link for purchase/download, never expose product_page_url directly
   if (project.purchase_url) {
     readme += `- 🎁 Get it [here](${project.purchase_url})\n`;
   }
