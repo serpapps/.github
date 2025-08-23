@@ -23,7 +23,9 @@ We also have a free community called [SERP University](https://serp.ly/@serp/com
 
 <details>
   <summary>△ ▽</summary>
+  
 - [SERP XXX](https://github.com/serpxxx)
+
   ## 🤖 APPS
 
 - [Loom Video Downloader](https://github.com/serpapps/loom-video-downloader)
