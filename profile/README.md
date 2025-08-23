@@ -20,7 +20,11 @@ We also have a free community called [SERP University](https://serp.ly/@serp/com
 - 🛒 [Shop](https://serp.ly/@serp/stuff) - Browse stuff to buy
 - 🎓 [Courses](https://serp.ly/@serp/courses)
 
-## 🤖 APPS
+
+<details>
+  <summary>△ ▽</summary>
+- [SERP XXX](https://github.com/serpxxx)
+  ## 🤖 APPS
 
 - [Loom Video Downloader](https://github.com/serpapps/loom-video-downloader)
 - [Skool Video Downloader](https://github.com/serpapps/skool-downloader)
@@ -30,7 +34,4 @@ We also have a free community called [SERP University](https://serp.ly/@serp/com
 - [Vimeo Video Downloader](https://github.com/serpapps/vimeo-video-downloader)
 - [Wistia Video Downloader](https://github.com/serpapps/wistia-video-downloader)
 
-<details>
-  <summary>△ ▽</summary>
-- [SERP XXX](https://github.com/serpxxx)
 </details>
