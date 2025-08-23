@@ -1,4 +1,4 @@
-name: Generate README from JSON
+name: call Generate README from JSON
 
 on:
   push:
