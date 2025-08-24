@@ -54,14 +54,15 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           path: output
       
-      - name: Checkout script branch
+      - name: Checkout script from serpapps/.github
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.script_branch }}
+          repository: serpapps/.github
+          ref: main
           token: ${{ secrets.GITHUB_TOKEN }}
           path: script
           sparse-checkout: |
-            ${{ inputs.script_path }}
+            scripts/generate-readme.js
       
       - name: Checkout JSON branch
         uses: actions/checkout@v4
@@ -88,16 +89,15 @@ jobs:
           cp -r json/${{ inputs.json_path }} workspace/${{ inputs.json_path }}
           
           # Copy script and its directory structure
-          SCRIPT_DIR=$(dirname "${{ inputs.script_path }}")
-          mkdir -p workspace/$SCRIPT_DIR
-          cp -r script/${{ inputs.script_path }} workspace/${{ inputs.script_path }}
+          mkdir -p workspace/scripts
+          cp -r script/scripts/generate-readme.js workspace/scripts/generate-readme.js
           
           # Copy output directory structure (for preserving other files)
           cp -r output/* workspace/ 2>/dev/null || true
       
       - name: Generate README
         working-directory: workspace
-        run: node ${{ inputs.script_path }}
+        run: node scripts/generate-readme.js
       
       - name: Check for changes
         id: check_changes
