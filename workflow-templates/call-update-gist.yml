@@ -14,9 +14,9 @@ on:
 
 jobs:
   update:
-    uses: serpuniversity/.github/.github/workflows/update-gist.yml@main
+    uses: serpapps/.github/.github/workflows/update-gist.yml@main
     with:
       gist_id: ${{ github.event.inputs.gist_id }}
       file_path: ${{ github.event.inputs.file_path }}
     secrets:
-      GH_PAT_PROFESSOR_SERP: ${{ secrets.GH_PAT_PROFESSOR_SERP }}
+      GH_PAT: ${{ secrets.GH_PAT }}
