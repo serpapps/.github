@@ -13,7 +13,8 @@ function generateReadme(data) {
     readme += `# ${project.name}\n\n`;
   }
   
-  if (project.tagline) {
+  if (project.tagline && !project.tagline.startsWith('http')) {
+    // Only show tagline if it's not a URL
     readme += `> ${project.tagline}\n\n`;
   }
   
@@ -189,6 +190,13 @@ function generateReadme(data) {
     }
     
     readme += '\n';
+  }
+  
+  // Add keywords at the bottom in a details section
+  if (project.keywords && project.keywords.length > 0) {
+    readme += `<details>\n<summary>Keywords</summary>\n\n`;
+    readme += project.keywords.join(', ');
+    readme += `\n</details>\n\n`;
   }
   
   return readme;
