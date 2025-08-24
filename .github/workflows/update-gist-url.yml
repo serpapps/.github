@@ -14,6 +14,7 @@ on:
 jobs:
   update-gist-url:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -39,7 +40,7 @@ jobs:
           # Show the change
           echo "Updated github_gist_url field:"
           jq '.github_gist_url' data/readme.json
-      
+          
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"
@@ -51,4 +52,5 @@ jobs:
           Gist URL: ${{ inputs.gist_url }}" || echo "No changes to commit"
           
           git push origin assets || echo "No changes to push"
+          
           echo "✅ Successfully updated readme.json with gist URL"
