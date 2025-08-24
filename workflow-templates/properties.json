@@ -1,0 +1,7 @@
+{
+  "name": "serpapps caller workflows",
+  "description": "serpapps caller workflows",
+  "iconName": "actions",
+  "categories": ["automation"],
+  "filePatterns": ["README.md"]
+}
