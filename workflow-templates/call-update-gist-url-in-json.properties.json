@@ -1,12 +1,10 @@
 {
   "name": "call-update-gist-url-in-json",
   "description": "Workflow to update the GitHub Gist URL in readme.json file on assets branch",
-  "iconName": "octicon-link",
   "categories": [
     "Automation",
-    "Utilities"
   ],
   "filePatterns": [
-    "workflow-templates/update-gist-url.yml"
+    "README.md"
   ]
 }
