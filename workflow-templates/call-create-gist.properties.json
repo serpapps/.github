@@ -1,6 +1,6 @@
 {
-  "name": "serpapps caller workflows",
-  "description": "serpapps caller workflows",
+  "name": "call-create-gist",
+  "description": "serpapps",
   "iconName": "actions",
   "categories": ["automation"],
   "filePatterns": ["README.md"]
