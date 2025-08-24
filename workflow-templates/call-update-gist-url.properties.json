@@ -2,7 +2,7 @@
   "name": "call-update-gist-url",
   "description": "Workflow to update the GitHub Gist URL in readme.json file on assets branch",
   "categories": [
-    "Automation",
+    "Automation"
   ],
   "filePatterns": [
     "README.md"
