@@ -1,0 +1,7 @@
+{
+  "name": "call-update-gist",
+  "description": "serpapps",
+  "iconName": "actions",
+  "categories": ["automation"],
+  "filePatterns": ["README.md"]
+}
