@@ -1,0 +1,7 @@
+{
+  "name": "call-generate-readme-from-json",
+  "description": "serpapps",
+  "iconName": "actions",
+  "categories": ["automation"],
+  "filePatterns": ["README.md"]
+}
