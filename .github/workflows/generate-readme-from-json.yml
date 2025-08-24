@@ -51,7 +51,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ inputs.output_branch }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_PAT }}
           path: output
       
       - name: Checkout script from serpapps/.github
@@ -59,7 +59,7 @@ jobs:
         with:
           repository: serpapps/.github
           ref: main
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_PAT }}
           path: script
           sparse-checkout: |
             scripts/generate-readme.js
@@ -68,7 +68,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ inputs.json_branch }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_PAT }}
           path: json
           sparse-checkout: |
             ${{ inputs.json_path }}
