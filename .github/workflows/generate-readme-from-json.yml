@@ -97,7 +97,7 @@ jobs:
       
       - name: Generate README
         working-directory: workspace
-        run: node scripts/generate-readme.js
+        run: node scripts/generate-readme.js ${{ inputs.json_path }} ${{ inputs.output_filename }}
       
       - name: Check for changes
         id: check_changes
