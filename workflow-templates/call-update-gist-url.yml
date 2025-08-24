@@ -1,4 +1,4 @@
-name: Update Gist URL in readme.json
+name: Update Gist URL
 
 on:
   workflow_dispatch:
@@ -10,45 +10,7 @@ on:
         default: ''
 
 jobs:
-  update-gist-url:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          ref: assets
-          token: ${{ secrets.GITHUB_TOKEN }}
-      
-      - name: Update readme.json with gist URL
-        run: |
-          # Check if readme.json exists
-          if [ ! -f "data/readme.json" ]; then
-            echo "❌ Error: data/readme.json not found on assets branch"
-            exit 1
-          fi
-          
-          # Update the github_gist_url field
-          echo "Updating readme.json with gist URL: ${{ github.event.inputs.gist_url }}"
-          
-          # Use jq to update the JSON file
-          jq '.github_gist_url = "${{ github.event.inputs.gist_url }}"' data/readme.json > data/readme.json.tmp
-          mv data/readme.json.tmp data/readme.json
-          
-          # Show the change
-          echo "Updated github_gist_url field:"
-          jq '.github_gist_url' data/readme.json
-          
-      - name: Commit and push changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          
-          git add data/readme.json
-          git commit -m "Update gist URL in readme.json
-          
-          Gist URL: ${{ github.event.inputs.gist_url }}" || echo "No changes to commit"
-          
-          git push origin assets || echo "No changes to push"
-          
-          echo "✅ Successfully updated readme.json with gist URL"
+  call-workflow:
+    uses: serpapps/.github/.github/workflows/update-gist-url.yml@main
+    with:
+      gist_url: ${{ github.event.inputs.gist_url }}
