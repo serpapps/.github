@@ -1,0 +1,145 @@
+name: Comment on Gist
+
+on:
+  workflow_call:
+    inputs:
+      gist_id:
+        description: 'The ID of the gist to comment on'
+        required: true
+        type: string
+      content_source:
+        description: 'Source of comment content: file, release, issue, or direct'
+        required: true
+        type: string
+      file_path:
+        description: 'Path to file (when content_source is file)'
+        required: false
+        type: string
+      release_tag:
+        description: 'Release tag (when content_source is release)'
+        required: false
+        type: string
+      issue_number:
+        description: 'Issue number (when content_source is issue)'
+        required: false
+        type: string
+      comment_text:
+        description: 'Direct comment text (when content_source is direct)'
+        required: false
+        type: string
+      github_token:
+        description: 'GitHub PAT with gist write access'
+        required: true
+        type: string
+
+jobs:
+  comment-on-gist:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        if: ${{ inputs.content_source == 'file' }}
+        
+      - name: Get comment content
+        id: get_content
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ inputs.github_token }}
+        run: |
+          # Get content based on source type
+          case "${{ inputs.content_source }}" in
+            "file")
+              if [ ! -f "${{ inputs.file_path }}" ]; then
+                echo "Error: File not found at ${{ inputs.file_path }}"
+                exit 1
+              fi
+              cat "${{ inputs.file_path }}" > /tmp/comment_content.txt
+              ;;
+              
+            "release")
+              if [ -z "${{ inputs.release_tag }}" ]; then
+                echo "Error: release_tag is required when content_source is release"
+                exit 1
+              fi
+              # Fetch release notes
+              RELEASE_BODY=$(gh api repos/${{ github.repository }}/releases/tags/${{ inputs.release_tag }} --jq '.body' 2>/dev/null || echo "")
+              if [ -z "$RELEASE_BODY" ]; then
+                echo "Error: Release with tag ${{ inputs.release_tag }} not found"
+                exit 1
+              fi
+              echo "$RELEASE_BODY" > /tmp/comment_content.txt
+              ;;
+              
+            "issue")
+              if [ -z "${{ inputs.issue_number }}" ]; then
+                echo "Error: issue_number is required when content_source is issue"
+                exit 1
+              fi
+              # Fetch issue body
+              ISSUE_BODY=$(gh api repos/${{ github.repository }}/issues/${{ inputs.issue_number }} --jq '.body' 2>/dev/null || echo "")
+              if [ -z "$ISSUE_BODY" ]; then
+                echo "Error: Issue #${{ inputs.issue_number }} not found"
+                exit 1
+              fi
+              echo "$ISSUE_BODY" > /tmp/comment_content.txt
+              ;;
+              
+            "direct")
+              if [ -z "${{ inputs.comment_text }}" ]; then
+                echo "Error: comment_text is required when content_source is direct"
+                exit 1
+              fi
+              echo "${{ inputs.comment_text }}" > /tmp/comment_content.txt
+              ;;
+              
+            *)
+              echo "Error: Invalid content_source. Must be: file, release, issue, or direct"
+              exit 1
+              ;;
+          esac
+          
+      - name: Post comment to gist
+        env:
+          GITHUB_TOKEN: ${{ inputs.github_token }}
+        shell: bash
+        run: |
+          GIST_ID="${{ inputs.gist_id }}"
+          
+          # First, check if the gist exists
+          GIST_CHECK=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/gists/$GIST_ID)
+          
+          if [ "$GIST_CHECK" != "200" ]; then
+            echo "Error: Gist with ID $GIST_ID not found or not accessible"
+            exit 1
+          fi
+          
+          # Create JSON payload for comment
+          jq -Rs '{body: .}' < /tmp/comment_content.txt > /tmp/comment_payload.json
+          
+          # Post comment to gist
+          RESPONSE=$(curl -s -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/gists/$GIST_ID/comments \
+            -d @/tmp/comment_payload.json)
+          
+          # Extract comment URL
+          COMMENT_URL=$(echo "$RESPONSE" | jq -r '.html_url')
+          COMMENT_ID=$(echo "$RESPONSE" | jq -r '.id')
+          
+          if [ "$COMMENT_URL" = "null" ] || [ -z "$COMMENT_URL" ]; then
+            echo "Error posting comment:"
+            echo "$RESPONSE" | jq .
+            exit 1
+          fi
+          
+          echo "✅ Comment posted successfully!"
+          echo "💬 Comment URL: $COMMENT_URL"
+          echo "🆔 Comment ID: $COMMENT_ID"
+          echo "📝 Gist ID: $GIST_ID"
