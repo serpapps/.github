@@ -1,0 +1,7 @@
+{
+  "name": "call-comment-on-gist-with-newest-release",
+  "description": "serpapps",
+  "iconName": "actions",
+  "categories": ["automation"],
+  "filePatterns": ["README.md"]
+}
