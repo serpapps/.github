@@ -8,19 +8,19 @@ body:
   - type: markdown
     attributes:
       value: |
-        ### Step 1. [Star the repo ⭐](https://raw.githubusercontent.com/serpapps/.github/refs/heads/main/images/star-repo.gif)
+        ### 1. [Star the repo ⭐](https://raw.githubusercontent.com/serpapps/.github/refs/heads/main/images/star-repo.gif)
         |
         
   - type: markdown
     attributes:
       value: |
-        ### Step 2. Check the [FAQs](https://github.com/orgs/serpapps/discussions/categories/faq) before submitting a bug
+        ### 2. Check the [FAQs](https://github.com/orgs/serpapps/discussions/categories/faq) before submitting a bug
         |
         
   - type: dropdown
     id: os
     attributes:
-      label: What OS (Operating System) are you using?
+      label: 3. What OS (Operating System) are you using?
       options:
         - Mac
         - Windows
@@ -31,7 +31,7 @@ body:
   - type: dropdown
     id: browser
     attributes:
-      label: What browser are you using?
+      label: 4. What browser are you using?
       options:
         - Chrome
         - Firefox
@@ -45,7 +45,7 @@ body:
   - type: input
     id: webpage
     attributes:
-      label: What URL (webpage) are you trying to download from?
+      label: 5. What URL (webpage) are you trying to download from?
       placeholder: https://somewebsite.com/blog/a-post-with-a-cool-video
     validations:
       required: true
@@ -53,7 +53,7 @@ body:
   - type: input
     id: video
     attributes:
-      label: What is the URL of the video you are trying to download?
+      label: 6. What is the URL of the video you are trying to download?
       placeholder: https://www.loom.com/share/b19b38d0ce2b44f5a049b871d9a38925
     validations:
       required: true
@@ -61,7 +61,7 @@ body:
   - type: textarea
     id: error-message
     attributes:
-      label: Error Message
+      label: 7. Error Message
       description: |
         Please paste the error message you are receiving
     validations:
