@@ -7,10 +7,10 @@ name: Comment on Gist with Latest Release
         description: 'The ID of the gist to comment on'
         required: true
         type: string
-      github_token:
+    secrets:
+      GH_PAT:
         description: 'GitHub PAT with gist write access'
         required: true
-        type: string
 
 jobs:
   comment-on-gist:
@@ -21,7 +21,7 @@ jobs:
         id: get_content
         shell: bash
         env:
-          GITHUB_TOKEN: ${{ inputs.github_token }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
         run: |
           # Fetch latest release content
           RELEASE_BODY=$(gh api repos/${{ github.repository }}/releases/latest \
@@ -35,7 +35,7 @@ jobs:
 
       - name: Post comment to gist
         env:
-          GITHUB_TOKEN: ${{ inputs.github_token }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
         shell: bash
         run: |
           GIST_ID="${{ inputs.gist_id }}"
