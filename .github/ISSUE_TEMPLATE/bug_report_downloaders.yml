@@ -9,15 +9,11 @@ body:
     attributes:
       value: |
         ### Step 1. [Star the repo ⭐](https://raw.githubusercontent.com/serpapps/.github/refs/heads/main/images/star-repo.gif)
-        .
-        .
         
   - type: markdown
     attributes:
       value: |
         ### Step 2. Check the [FAQs](https://github.com/orgs/serpapps/discussions/categories/faq) before submitting a bug
-        .
-        .
         
   - type: dropdown
     id: os
