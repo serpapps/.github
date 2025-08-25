@@ -1,4 +1,4 @@
-name: Comment on Gist
+name: comment on gist w/ release
 
 on:
   workflow_call:
