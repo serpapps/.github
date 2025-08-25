@@ -129,14 +129,35 @@ jobs:
             https://api.github.com/gists/$GIST_ID/comments \
             -d @/tmp/comment_payload.json)
           
-          # Extract comment URL
-          COMMENT_URL=$(echo "$RESPONSE" | jq -r '.html_url')
-          COMMENT_ID=$(echo "$RESPONSE" | jq -r '.id')
-          
-          if [ "$COMMENT_URL" = "null" ] || [ -z "$COMMENT_URL" ]; then
+          # Check for API error first
+          ERROR_MESSAGE=$(echo "$RESPONSE" | jq -r '.message // empty')
+          if [ -n "$ERROR_MESSAGE" ]; then
             echo "Error posting comment:"
             echo "$RESPONSE" | jq .
             exit 1
+          fi
+
+          # Extract comment details
+          COMMENT_ID=$(echo "$RESPONSE" | jq -r '.id // empty')
+          COMMENT_URL=$(echo "$RESPONSE" | jq -r '.html_url // empty')
+
+          # Check if comment was created successfully (ID is required)
+          if [ -z "$COMMENT_ID" ] || [ "$COMMENT_ID" = "null" ]; then
+            echo "Error posting comment (no comment ID returned):"
+            echo "$RESPONSE" | jq .
+            exit 1
+          fi
+
+          # If html_url is not provided, construct it from the API url
+          if [ -z "$COMMENT_URL" ] || [ "$COMMENT_URL" = "null" ]; then
+            API_URL=$(echo "$RESPONSE" | jq -r '.url // empty')
+            if [ -n "$API_URL" ] && [ "$API_URL" != "null" ]; then
+              # Convert API URL to web URL: api.github.com/gists/ID/comments/COMMENT_ID -> gist.github.com/ID#gistcomment-COMMENT_ID
+              GIST_ID=$(echo "$API_URL" | sed 's|.*/gists/\([^/]*\)/.*|\1|')
+              COMMENT_URL="https://gist.github.com/${GIST_ID}#gistcomment-${COMMENT_ID}"
+            else
+              COMMENT_URL="(URL not available)"
+            fi
           fi
           
           echo "✅ Comment posted successfully!"
