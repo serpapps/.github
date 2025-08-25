@@ -1,0 +1,47 @@
+name: "Bug Report 🐛 (AI Apps)"
+description: "Report a bug for an AI application"
+labels: ["bug"]
+projects: ["serpapps/1"]
+type: Bug
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 1. [Star the repo ⭐](https://raw.githubusercontent.com/serpapps/.github/refs/heads/main/images/star-repo.gif)
+        |
+        
+  - type: markdown
+    attributes:
+      value: |
+        ### 2. Check the [FAQs](https://github.com/orgs/serpapps/discussions/categories/faq) before submitting a bug
+        |
+        
+  - type: dropdown
+    id: os
+    attributes:
+      label: 3. What OS (Operating System) are you using?
+      options:
+        - Mac
+        - Windows
+        - Linux
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 4. Upload logs.txt
+      description: |
+        Please upload the logs.txt file from the app
+    validations:
+      required: true
+
+  - type: textarea
+    id: message
+    attributes:
+      label: 5. Message
+      description: |
+        Add a message
+    validations:
+      required: true
