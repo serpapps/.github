@@ -20,7 +20,7 @@ body:
   - type: dropdown
     id: os
     attributes:
-      label: 3. What OS (Operating System) are you using?
+      label: What OS (Operating System) are you using?
       options:
         - Mac
         - Windows
@@ -31,7 +31,7 @@ body:
   - type: dropdown
     id: browser
     attributes:
-      label: 4. What browser are you using?
+      label: What browser are you using?
       options:
         - Chrome
         - Firefox
@@ -45,24 +45,31 @@ body:
   - type: input
     id: webpage
     attributes:
-      label: 5. What URL (webpage) are you trying to download from?
-      placeholder: https://somewebsite.com/blog/a-post-with-a-cool-video
+      label: What URL (webpage) are you trying to download from?
+      placeholder: https://somewebsite.com/blog/post-1234567890
     validations:
       required: true
-      
+
+    - type: input
+    id: version
+    attributes:
+      label: What app/extension version are you using? This is how you find out: https://github.com/serpapps/.github/discussions/6
+    validations:
+      required: true
+
   - type: input
     id: video
     attributes:
-      label: 6. What is the URL of the video you are trying to download?
+      label: What is the URL of the video you are trying to download?
       placeholder: https://www.loom.com/share/b19b38d0ce2b44f5a049b871d9a38925
     validations:
       required: true
         
   - type: textarea
-    id: error-message
+    id: message
     attributes:
-      label: 7. Error Message
+      label: Message
       description: |
-        Please paste the error message you are receiving
+        You message
     validations:
       required: true
