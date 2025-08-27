@@ -52,7 +52,7 @@ body:
   - type: input
     id: version
     attributes:
-      label: What app/extension version are you using? This is how you find out: https://github.com/serpapps/.github/discussions/6
+      label: "What app/extension version are you using? This is how you find out: https://github.com/serpapps/.github/discussions/6"
     validations:
       required: true
       
