@@ -2,7 +2,7 @@
 
 
 <details>
-  <summary>apps</summary>
+  <summary></summary>
   
 - [123movies downloader](https://github.com/serpapps/123movies-downloader)
 - [123rf downloader](https://github.com/serpapps/123rf-downloader)
