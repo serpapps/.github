@@ -18,7 +18,7 @@ We also have a free community called [SERP University](https://serp.ly/@serp/com
 
 ## About SERP Downloaders
 
-There are alot of places online to upload your work, and even more fileformats you could publish your creations in.
+There are alot of places online to upload your work, and even more [file formats](https://serptools.github.io/files/) you could publish your creations in.
 
 Many of them have poor user experience for creators and uploaders (even the really really big ones). 
 
