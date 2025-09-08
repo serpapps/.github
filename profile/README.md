@@ -14,6 +14,30 @@ Each product has it's own [repository](https://github.com/orgs/serpapps/reposito
 
 We also have a free community called [SERP University](https://serp.ly/@serp/community) you can join to connect with the SERP team, other users, discuss features, share tips, etc. This is not a "support forum" so do not post your support-related questions here.
 
+---
+
+## About SERP Downloaders
+
+There are alot of places online to upload your work, and even more fileformats you could publish your creations in.
+
+Many of them have poor user experience for creators and uploaders (even the really really big ones). 
+
+And many of them dissapear after a while. 
+
+As a creator there are too many factors that hinder your ability to save, retreive and backup your content -- even the RAW creation doesnt match the published output sometimes due to metadata, captions, thumbnails, etc.
+
+So part of our effort with SERP Apps is to provide creators a way to quickly and conveniently download and save the various types of content they have uploaded around the web.
+
+That is the vision behind the SERP Downloaders.
+
+We hope that you will use them to save the content you worked so hard to create, and we do recognize that they could be used for less-than-above-board endeavors... but what couldn't? If we stopped building everything that could be used for a malicious purpose the World (and especially the internet) would be filled with ... nothing.
+
+Use these downloaders on your own content, that you have rights to. 
+
+And be a proprietor of good  buggery... I mean buffoonery!
+
+---
+
 ## 🔗 MORE LINKS
 
 - 💌 [Newsletter](https://serp.ly/@serp/email) - Get email updates on everything
