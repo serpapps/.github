@@ -16,7 +16,7 @@ We also have a free community called [SERP University](https://serp.ly/@serp/com
 
 ---
 
-## About SERP Downloaders
+## about downloaders
 
 There are alot of places online to upload your work, and even more [file formats](https://serptools.github.io/files/) you could publish your creations in.
 
@@ -28,7 +28,13 @@ As a creator there are too many factors that hinder your ability to save, retrei
 
 So part of our effort with SERP Apps is to provide creators a way to quickly and conveniently download and save the various types of content they have uploaded around the web.
 
-That is the vision behind the SERP Downloaders.
+We provide tools to make your life on the web easier. To make downloading public content, ideally your content, easier.
+
+We take **zero liability**. the end user is responsible for what they download, how they use and distribute that content.
+
+We don't save or store the content. We don't redistribute the content. 
+
+We are not pirates, this is not a piracy tool. It only interacts with and downloads free & publicly accessible content - same content can be downloaded via dev tools of any modern web browser.
 
 We hope that you will use them to save the content you worked so hard to create, and we do recognize that they could be used for less-than-above-board endeavors... but what couldn't? If we stopped building everything that could be used for a malicious purpose the World (and especially the internet) would be filled with ... nothing.
 
@@ -38,7 +44,7 @@ And be a proprietor of good  buggery... I mean buffoonery!
 
 ---
 
-## 🔗 MORE LINKS
+## 🔗 more links
 
 - 💌 [Newsletter](https://serp.ly/@serp/email) - Get email updates on everything
 - 🛒 [Shop](https://serp.ly/@serp/stuff) - Browse stuff to buy
@@ -50,11 +56,10 @@ And be a proprietor of good  buggery... I mean buffoonery!
   
 - [SERP XXX](https://github.com/serpxxx)
 
-  ## 🤖 APPS
 
 <details>
 
-<summary>Downloaders</summary>
+<summary>downloaders</summary>
 
 - [123movies-downloader](https://github.com/serpapps/123movies-downloader)
 - [123rf-downloader](https://github.com/serpapps/123rf-downloader)
