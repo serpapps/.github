@@ -134,13 +134,28 @@ jobs:
             https://api.github.com/gists/$GIST_ID \
             -d @payload.json)
           
-          # Extract and display the gist URL
-          GIST_URL=$(echo "$RESPONSE" | jq -r '.html_url')
-          
-          if [ "$GIST_URL" = "null" ] || [ -z "$GIST_URL" ]; then
+          # Check for API error first
+          ERROR_MESSAGE=$(echo "$RESPONSE" | jq -r '.message // empty')
+          if [ -n "$ERROR_MESSAGE" ]; then
             echo "Error updating gist:"
             echo "$RESPONSE" | jq .
             exit 1
+          fi
+
+          # Extract gist details
+          RESPONSE_GIST_ID=$(echo "$RESPONSE" | jq -r '.id // empty')
+          GIST_URL=$(echo "$RESPONSE" | jq -r '.html_url // empty')
+
+          # Check if gist was updated successfully (ID is required)
+          if [ -z "$RESPONSE_GIST_ID" ] || [ "$RESPONSE_GIST_ID" = "null" ]; then
+            echo "Error updating gist (no gist ID returned):"
+            echo "$RESPONSE" | jq .
+            exit 1
+          fi
+
+          # If html_url is not provided, construct it from the gist ID
+          if [ -z "$GIST_URL" ] || [ "$GIST_URL" = "null" ]; then
+            GIST_URL="https://gist.github.com/${GIST_ID}"
           fi
           
           echo "✅ Gist updated successfully!"
