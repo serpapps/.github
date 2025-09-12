@@ -11,11 +11,23 @@ body:
         |
         
   - type: markdown
+      attributes:
+        value: |
+          ### 2. Search issue history before submitting - [How to search issue history](https://github.com/orgs/serpapps/discussions/45)
+          |
+
+ - type: dropdown
+    id: issue-category
     attributes:
-      value: |
-        ### 2. Check the [FAQs](https://github.com/orgs/serpapps/discussions/categories/faq) before submitting a bug
-        |
-        
+      label: Which category best describes your problem?
+      options:
+        - media not found
+        - media not downloaded
+        - download quality issue
+        - Other
+    validations:
+      required: true
+
   - type: dropdown
     id: os
     attributes:
@@ -52,7 +64,7 @@ body:
   - type: input
     id: version
     attributes:
-      label: "What app/extension version are you using? This is how you find out: https://github.com/serpapps/.github/discussions/6"
+      label: "What version of the app are you using? This is how you find out: https://github.com/serpapps/.github/discussions/6"
     validations:
       required: true
       
