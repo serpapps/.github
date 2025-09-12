@@ -1,5 +1,18 @@
 ![SERP_banner](https://github.com/user-attachments/assets/6da22887-0c34-4e61-aaa7-9624b6319412)
 
+## 🔄 Duplicate Issue Detection
+
+This organization uses automated duplicate detection to help manage issues efficiently. When you open an issue, our system automatically:
+
+- **Searches** for similar existing issues
+- **Comments** with potential duplicates if found
+- **Links** directly to related issues for easy comparison
+
+**For issue authors:** If you receive a duplicate detection comment, please review the linked issues. If yours is truly unique, add the `not-duplicate` label or provide more specific details.
+
+**Configuration:** See [DUPLICATE_DETECTION.md](.github/DUPLICATE_DETECTION.md) for technical details.
+
+---
 
 <details>
   <summary></summary>

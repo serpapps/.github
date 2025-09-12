@@ -1,0 +1,71 @@
+name: Setup Duplicate Detection Labels
+
+# This workflow ensures that the necessary labels for duplicate detection exist
+# Run this once to set up the labels, or when updating label configurations
+
+on:
+  workflow_dispatch:  # Manual trigger
+  push:
+    paths:
+      - '.github/labels.yml'
+
+jobs:
+  create-labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Create/Update Labels
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const fs = require('fs');
+            const yaml = require('js-yaml');
+            
+            try {
+              // Read the labels configuration
+              const labelsConfig = fs.readFileSync('.github/labels.yml', 'utf8');
+              const config = yaml.load(labelsConfig);
+              
+              console.log('Creating/updating labels for duplicate detection...');
+              
+              for (const label of config.labels) {
+                try {
+                  // Try to update existing label
+                  await github.rest.issues.updateLabel({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    name: label.name,
+                    color: label.color,
+                    description: label.description
+                  });
+                  console.log(`Updated label: ${label.name}`);
+                } catch (error) {
+                  if (error.status === 404) {
+                    // Label doesn't exist, create it
+                    try {
+                      await github.rest.issues.createLabel({
+                        owner: context.repo.owner,
+                        repo: context.repo.repo,
+                        name: label.name,
+                        color: label.color,
+                        description: label.description
+                      });
+                      console.log(`Created label: ${label.name}`);
+                    } catch (createError) {
+                      console.error(`Failed to create label ${label.name}:`, createError.message);
+                    }
+                  } else {
+                    console.error(`Failed to update label ${label.name}:`, error.message);
+                  }
+                }
+              }
+              
+              console.log('Label setup completed!');
+              
+            } catch (error) {
+              console.error('Error setting up labels:', error.message);
+              process.exit(1);
+            }

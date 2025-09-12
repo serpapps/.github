@@ -1,0 +1,23 @@
+# GitHub Issue Labels for Duplicate Detection
+# These labels are used by the duplicate detection system
+
+labels:
+  - name: "possible-duplicate"
+    color: "ffcc00"
+    description: "This issue might be a duplicate of an existing issue"
+    
+  - name: "not-duplicate"
+    color: "00ff00" 
+    description: "Confirmed as not a duplicate issue"
+    
+  - name: "confirmed-unique"
+    color: "00cc00"
+    description: "Verified as a unique issue, not a duplicate"
+    
+  - name: "pending-duplicate-check"
+    color: "cccccc"
+    description: "Issue is being processed for duplicate detection"
+    
+  - name: "duplicate-resolved"
+    color: "006600"
+    description: "Duplicate issue that has been resolved or merged"

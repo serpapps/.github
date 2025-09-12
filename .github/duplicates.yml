@@ -1,0 +1,26 @@
+# Alternative configuration name for Duplicate Issues Detection
+# Some apps may look for this filename instead of duplicate-issues.yml
+
+# This is a symlink-like reference to the main configuration
+# If the app looks for duplicates.yml, it will find the same configuration
+
+# Enable duplicate detection
+enabled: true
+
+# Basic configuration - for apps that prefer simpler config
+similarity: 0.7
+comment_template: |
+  👋 @{{ author }}
+  
+  This issue appears to be similar to:
+  {% for dup in duplicates %}
+  - {{ dup.title }} (#{{ dup.number }})
+  {% endfor %}
+  
+  Please check if this addresses your concern.
+
+# Auto-label potential duplicates  
+label: "possible-duplicate"
+
+# Only check open issues
+check_open_only: true

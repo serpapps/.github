@@ -1,0 +1,22 @@
+# Duplicate Issues App Configuration
+# This is a minimal configuration for apps that prefer simple settings
+
+# Basic settings
+similarity_threshold: 0.7
+enable_comments: true
+enable_labeling: true
+
+# Comment template
+comment: |
+  Hi @{author},
+  
+  I found potentially similar issues:
+  {duplicates}
+  
+  Please check if any of these address your concern.
+
+# Label to apply
+duplicate_label: "possible-duplicate"
+
+# Only check open issues
+open_only: true

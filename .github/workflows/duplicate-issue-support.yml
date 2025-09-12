@@ -1,0 +1,68 @@
+name: Duplicate Issue Detection Support
+
+# This workflow can help support the Duplicate Issues app
+# It ensures proper labeling and provides fallback detection if needed
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  prepare-for-duplicate-detection:
+    runs-on: ubuntu-latest
+    if: github.event.action == 'opened' || github.event.action == 'edited'
+    
+    steps:
+      - name: Add detection label
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            // Add a temporary label to indicate this issue is being processed
+            // The Duplicate Issues app should process this and potentially replace with 'possible-duplicate'
+            try {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: ['pending-duplicate-check']
+              });
+              console.log('Added pending-duplicate-check label');
+            } catch (error) {
+              console.log('Could not add label (may not exist):', error.message);
+            }
+
+      - name: Comment on new issue
+        if: github.event.action == 'opened'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            // Add a welcome comment that mentions duplicate detection
+            const comment = `👋 Thank you for opening this issue!
+
+            Our duplicate detection system is checking for similar issues. If any potential duplicates are found, they will be listed here shortly.
+
+            In the meantime, please make sure your issue includes:
+            - Clear description of the problem
+            - Steps to reproduce (if applicable) 
+            - Expected vs actual behavior
+            - System information (if relevant)
+
+            *This helps both with duplicate detection and faster resolution.*`;
+
+            // Only add this comment if it's the first comment on the issue
+            const comments = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
+
+            if (comments.data.length === 0) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: comment
+              });
+            }
