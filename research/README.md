@@ -1,6 +1,6 @@
 # Features Research
 
-This directory contains feature lists for all serpapps downloader applications. Each `features.yml` file contains 15-20 short feature bullet points that describe the capabilities and benefits of each downloader.
+This directory contains feature lists for all 95 serpapps downloader applications. Each `features.yml` file contains 15-20 short feature bullet points that describe the capabilities and benefits of each downloader.
 
 ## Structure
 
@@ -25,10 +25,65 @@ These feature lists are designed to be:
 ## Categories
 
 The downloaders are organized into several categories:
-- Video Platforms (YouTube, Vimeo, TikTok, etc.)
-- Educational Platforms (Udemy, Coursera, Skillshare, etc.)
-- Stock Media Platforms (Shutterstock, Getty Images, etc.)
-- Social Media Platforms (Instagram, Facebook, Twitter, etc.)
-- Streaming Platforms (Netflix, Hulu, Amazon Video, etc.)
-- Adult Content Platforms
-- Specialized Tools (M3U8, PDF, Thumbnails, etc.)
+
+### Video Platforms (20 repositories)
+- YouTube, Vimeo, TikTok, Twitch, Twitter, Facebook, VK, etc.
+- Features focus on high-quality downloads, batch processing, metadata extraction
+
+### Educational Platforms (12 repositories)
+- Udemy, Coursera, Skillshare, LinkedIn Learning, Khan Academy, etc.
+- Features emphasize course structure, offline learning, progress tracking
+
+### Stock Media Platforms (15 repositories)
+- Shutterstock, Getty Images, Pixabay, Unsplash, Freepik, Adobe Stock, etc.
+- Features highlight license management, batch downloads, creative workflows
+
+### Social Media Platforms (8 repositories)
+- Instagram, Snapchat, Telegram, Tumblr, Pinterest, etc.
+- Features focus on profile downloads, story archiving, social engagement
+
+### Streaming Platforms (8 repositories)
+- Netflix, Hulu, Amazon Video, Bilibili, Dailymotion, Tubi, etc.
+- Features emphasize series downloads, quality options, offline viewing
+
+### Adult Content Platforms (12 repositories)
+- Various platforms with professional, technical features
+- Features focus on privacy, security, and efficient downloading
+
+### Live Streaming/Cam Platforms (6 repositories)
+- Chaturbate, Stripchat, BongaCams, CamSoda, MyFreeCams, LiveJasmin
+- Features emphasize live recording, stream quality, privacy protection
+
+### Specialized Tools (14 repositories)
+- M3U8, PDF, Thumbnails, AI content, Archive tools, etc.
+- Features cover specific use cases and specialized formats
+
+## Generation Scripts
+
+The features were generated using batch scripts:
+- `generate-features.js` - Initial major platforms
+- `generate-features-batch2.js` - Educational and social platforms  
+- `generate-features-batch3.js` - Stock media and streaming
+- `generate-features-batch4.js` - Adult content and cam platforms
+- `generate-features-batch5.js` - Specialized tools and creative platforms
+- `generate-features-batch6.js` - Final repositories and archives
+- `validate-features.js` - Validation and completeness check
+
+## Quality Standards
+
+Each feature list includes:
+- 15-20 carefully crafted feature descriptions
+- Platform-specific capabilities and benefits
+- Common downloader features (batch processing, resume downloads, etc.)
+- Privacy and security considerations
+- Cross-platform compatibility mentions
+- Integration possibilities
+- Professional workflow support
+
+## Maintenance
+
+To update features:
+1. Edit individual .yml files or modify generation scripts
+2. Run validation: `node scripts/validate-features.js`
+3. Copy updated files to individual repositories as needed
+4. Update README generation to pull from these feature lists
