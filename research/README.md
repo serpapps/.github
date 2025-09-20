@@ -58,16 +58,15 @@ The downloaders are organized into several categories:
 - M3U8, PDF, Thumbnails, AI content, Archive tools, etc.
 - Features cover specific use cases and specialized formats
 
-## Generation Scripts
+## Generation Process
 
-The features were generated using batch scripts:
-- `generate-features.js` - Initial major platforms
-- `generate-features-batch2.js` - Educational and social platforms  
-- `generate-features-batch3.js` - Stock media and streaming
-- `generate-features-batch4.js` - Adult content and cam platforms
-- `generate-features-batch5.js` - Specialized tools and creative platforms
-- `generate-features-batch6.js` - Final repositories and archives
-- `validate-features.js` - Validation and completeness check
+The features were systematically generated in batches to ensure comprehensive coverage:
+- Initial major platforms (video, educational, stock media)
+- Social media and streaming platforms
+- Adult content and cam platforms  
+- Specialized tools and creative platforms
+- Final repositories and archive tools
+- Quality validation and completeness verification
 
 ## Quality Standards
 
