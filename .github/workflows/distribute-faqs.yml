@@ -1,0 +1,152 @@
+name: Distribute FAQ Files to Repositories
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Run in dry-run mode (no actual commits)'
+        required: false
+        default: 'true'
+        type: choice
+        options:
+        - 'true'
+        - 'false'
+
+jobs:
+  distribute-faqs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      
+    steps:
+    - name: Checkout .github repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        
+    - name: Install GitHub CLI
+      run: |
+        sudo apt-get update
+        sudo apt-get install gh
+        
+    - name: Authenticate GitHub CLI
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: echo "$GITHUB_TOKEN" | gh auth login --with-token
+      
+    - name: Create distribution script
+      run: |
+        cat > distribute_faqs.js << 'EOF'
+        const fs = require('fs');
+        const path = require('path');
+        const { execSync } = require('child_process');
+        
+        const DRY_RUN = process.env.DRY_RUN === 'true';
+        
+        function log(message) {
+          console.log(message);
+        }
+        
+        function executeCommand(command) {
+          if (DRY_RUN) {
+            log(`[DRY RUN] Would execute: ${command}`);
+            return '';
+          }
+          return execSync(command, { encoding: 'utf8' });
+        }
+        
+        async function distributeFAQs() {
+          const baseDir = path.join(__dirname, 'repository-faqs');
+          
+          if (!fs.existsSync(baseDir)) {
+            log('❌ repository-faqs directory not found');
+            process.exit(1);
+          }
+          
+          const repositories = fs.readdirSync(baseDir)
+            .filter(item => {
+              const itemPath = path.join(baseDir, item);
+              return fs.statSync(itemPath).isDirectory() && 
+                     fs.existsSync(path.join(itemPath, 'research', 'faq.yml'));
+            });
+          
+          log(`📁 Found ${repositories.length} repositories with FAQ files`);
+          
+          let successCount = 0;
+          let errorCount = 0;
+          
+          for (const repoName of repositories) {
+            try {
+              log(`\n🔄 Processing ${repoName}...`);
+              
+              const repoFullName = `serpapps/${repoName}`;
+              const faqFilePath = path.join(baseDir, repoName, 'research', 'faq.yml');
+              const faqContent = fs.readFileSync(faqFilePath, 'utf8');
+              
+              // Check if repository exists
+              try {
+                executeCommand(`gh repo view ${repoFullName} --json name`);
+              } catch (error) {
+                log(`⚠️  Repository ${repoFullName} not found or not accessible`);
+                errorCount++;
+                continue;
+              }
+              
+              // Clone repository to temporary directory
+              const tempDir = `/tmp/${repoName}`;
+              executeCommand(`rm -rf ${tempDir}`);
+              executeCommand(`gh repo clone ${repoFullName} ${tempDir}`);
+              
+              // Create research directory and faq.yml file
+              const researchDir = path.join(tempDir, 'research');
+              if (!DRY_RUN) {
+                fs.mkdirSync(researchDir, { recursive: true });
+                fs.writeFileSync(path.join(researchDir, 'faq.yml'), faqContent);
+              }
+              
+              // Commit and push changes
+              executeCommand(`cd ${tempDir} && git add research/faq.yml`);
+              executeCommand(`cd ${tempDir} && git commit -m "Add comprehensive FAQ file with common user questions and answers"`);
+              executeCommand(`cd ${tempDir} && git push`);
+              
+              // Cleanup
+              executeCommand(`rm -rf ${tempDir}`);
+              
+              log(`✅ Successfully distributed FAQ to ${repoFullName}`);
+              successCount++;
+              
+            } catch (error) {
+              log(`❌ Error processing ${repoName}: ${error.message}`);
+              errorCount++;
+            }
+          }
+          
+          log(`\n📊 Distribution Summary:`);
+          log(`   ✅ Successful: ${successCount}`);
+          log(`   ❌ Errors: ${errorCount}`);
+          log(`   📁 Total processed: ${repositories.length}`);
+          
+          if (DRY_RUN) {
+            log('\n🔍 This was a dry run. Set dry_run to "false" to execute actual distribution.');
+          }
+        }
+        
+        distributeFAQs().catch(console.error);
+        EOF
+        
+    - name: Run FAQ distribution
+      env:
+        DRY_RUN: ${{ github.event.inputs.dry_run }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: node distribute_faqs.js
+      
+    - name: Summary
+      run: |
+        echo "FAQ distribution workflow completed."
+        if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+          echo "This was a dry run. No actual changes were made."
+          echo "To perform actual distribution, re-run with dry_run set to 'false'."
+        fi

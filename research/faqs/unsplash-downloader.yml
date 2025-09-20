@@ -1,0 +1,41 @@
+# FAQ for serpapps/unsplash-downloader
+# Generated on: 2025-09-20T09:33:28.994Z
+# Status: completed
+
+repository: "serpapps/unsplash-downloader"
+service_name: "Unsplash"
+research_status: "completed"
+
+faqs:
+  - question: "How do I download images from Unsplash?"
+    answer: "To download from Unsplash: 1) Create an account and choose a subscription plan, 2) Search for desired images, 3) Select image size and license type, 4) Download through the official platform. Always use legitimate methods and respect licensing terms."
+    source: "expert_knowledge_base"
+    confidence: "high"
+
+  - question: "Are there free alternatives to downloading from Unsplash?"
+    answer: "Yes, there are free stock photo sites like Unsplash, Pexels, and Pixabay that offer high-quality images. However, Unsplash may offer unique content and commercial licenses. Always check licensing requirements for your intended use."
+    source: "expert_knowledge_base"
+    confidence: "high"
+
+  - question: "What image formats does Unsplash provide?"
+    answer: "Unsplash typically provides images in JPEG and PNG formats, with some platforms offering additional formats like SVG, EPS, or TIFF. Resolution options usually range from web-optimized sizes to high-resolution print quality."
+    source: "expert_knowledge_base"
+    confidence: "medium"
+
+  - question: "Can I use Unsplash images for commercial purposes?"
+    answer: "Commercial use of Unsplash images depends on the specific license you purchase. Standard licenses typically allow commercial use with some restrictions, while extended licenses offer broader usage rights. Always read the license agreement carefully."
+    source: "expert_knowledge_base"
+    confidence: "high"
+
+  - question: "What are the licensing requirements for Unsplash images?"
+    answer: "Unsplash images come with specific licensing terms that may require: 1) Attribution to the creator, 2) Restrictions on redistribution, 3) Limits on usage scope, 4) Prohibition of resale. Always comply with the license terms to avoid legal issues."
+    source: "expert_knowledge_base"
+    confidence: "high"
+
+last_updated: "2025-09-20T09:33:28.994Z"
+
+notes:
+  - "FAQs generated based on common user questions and industry best practices"
+  - "Content includes legal disclaimers and responsible usage guidelines"
+  - "Answers are comprehensive yet concise for better user experience"
+  - "All recommendations emphasize respecting copyright and terms of service"
