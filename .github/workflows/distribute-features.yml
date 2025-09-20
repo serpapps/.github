@@ -1,0 +1,149 @@
+name: Distribute Features to Repositories
+
+on:
+  workflow_dispatch: # Allow manual triggering
+  push:
+    paths:
+      - 'research/*.yml'  # Trigger when feature files are updated
+
+jobs:
+  distribute-features:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install @octokit/rest
+
+      - name: Distribute feature files
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          node << 'EOF'
+          const { Octokit } = require('@octokit/rest');
+          const fs = require('fs');
+          const path = require('path');
+
+          const octokit = new Octokit({
+            auth: process.env.GITHUB_TOKEN
+          });
+
+          async function distributeFeaturesFiles() {
+            const researchDir = './research';
+            const files = fs.readdirSync(researchDir).filter(f => f.endsWith('.yml') && f !== 'README.md');
+            
+            console.log(`Found ${files.length} feature files to distribute`);
+            
+            for (const file of files) {
+              const repoName = file.replace('.yml', '');
+              const filePath = path.join(researchDir, file);
+              const content = fs.readFileSync(filePath, 'utf8');
+              
+              try {
+                console.log(`Processing ${repoName}...`);
+                
+                // Check if repository exists
+                let repoExists = false;
+                try {
+                  await octokit.repos.get({
+                    owner: 'serpapps',
+                    repo: repoName
+                  });
+                  repoExists = true;
+                } catch (error) {
+                  if (error.status === 404) {
+                    console.log(`Repository serpapps/${repoName} not found, skipping...`);
+                    continue;
+                  }
+                  throw error;
+                }
+
+                if (!repoExists) continue;
+
+                // Check if research directory exists, create if not
+                let researchDirSha = null;
+                try {
+                  const researchDirResponse = await octokit.repos.getContent({
+                    owner: 'serpapps',
+                    repo: repoName,
+                    path: 'research'
+                  });
+                  researchDirSha = researchDirResponse.data.sha;
+                } catch (error) {
+                  if (error.status === 404) {
+                    // Create research directory by creating a .gitkeep file
+                    await octokit.repos.createOrUpdateFileContents({
+                      owner: 'serpapps',
+                      repo: repoName,
+                      path: 'research/.gitkeep',
+                      message: 'Create research directory for features',
+                      content: Buffer.from('').toString('base64')
+                    });
+                    console.log(`Created research directory in ${repoName}`);
+                  } else {
+                    throw error;
+                  }
+                }
+
+                // Check if features.yml already exists
+                let existingFileSha = null;
+                try {
+                  const existingFile = await octokit.repos.getContent({
+                    owner: 'serpapps',
+                    repo: repoName,
+                    path: 'research/features.yml'
+                  });
+                  existingFileSha = existingFile.data.sha;
+                } catch (error) {
+                  if (error.status !== 404) {
+                    throw error;
+                  }
+                }
+
+                // Create or update the features.yml file
+                const commitMessage = existingFileSha 
+                  ? `Update research/features.yml with latest features`
+                  : `Add research/features.yml with comprehensive feature list`;
+
+                await octokit.repos.createOrUpdateFileContents({
+                  owner: 'serpapps',
+                  repo: repoName,
+                  path: 'research/features.yml',
+                  message: commitMessage,
+                  content: Buffer.from(content).toString('base64'),
+                  ...(existingFileSha && { sha: existingFileSha })
+                });
+
+                console.log(`✅ Successfully distributed features.yml to serpapps/${repoName}`);
+                
+                // Add delay to avoid rate limiting
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+              } catch (error) {
+                console.error(`❌ Failed to distribute to ${repoName}:`, error.message);
+                continue;
+              }
+            }
+            
+            console.log('Distribution complete!');
+          }
+
+          distributeFeaturesFiles().catch(console.error);
+          EOF
+
+      - name: Clean up research directory
+        run: |
+          echo "Feature files have been distributed to their respective repositories."
+          echo "Keeping research directory as reference with documentation."
