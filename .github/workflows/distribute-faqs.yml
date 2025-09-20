@@ -96,6 +96,10 @@ jobs:
               executeCommand(`rm -rf ${tempDir}`);
               executeCommand(`gh repo clone ${repoFullName} ${tempDir}`);
               
+              // Configure git identity for commits
+              executeCommand(`cd ${tempDir} && git config user.email "actions@github.com"`);
+              executeCommand(`cd ${tempDir} && git config user.name "GitHub Actions"`);
+              
               // Create research directory and faq.yml file
               const researchDir = path.join(tempDir, 'research');
               if (!DRY_RUN) {

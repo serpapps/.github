@@ -130,6 +130,10 @@ async function distributeFAQs() {
           log(`📥 Cloning ${repoFullName}...`);
           executeCommand(`gh repo clone ${repoFullName} ${tempDir}`, { silent: true });
           
+          // Configure git identity for commits
+          executeCommand(`git config user.email "actions@github.com"`, { cwd: tempDir });
+          executeCommand(`git config user.name "GitHub Actions"`, { cwd: tempDir });
+          
           // Create research directory and FAQ file
           const researchDir = path.join(tempDir, 'research');
           fs.mkdirSync(researchDir, { recursive: true });
