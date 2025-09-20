@@ -8,15 +8,13 @@ body:
     attributes:
       value: |
         ### 1. [Star the repo ⭐](https://raw.githubusercontent.com/serpapps/.github/refs/heads/main/images/star-repo.gif)
-        |
-        
-  - type: markdown
-      attributes:
-        value: |
-          ### 2. Search issue history before submitting - [How to search issue history](https://github.com/orgs/serpapps/discussions/45)
-          |
 
- - type: dropdown
+  - type: markdown
+    attributes:
+      value: |
+        ### 2. Search issue history before submitting - [How to search issue history](https://github.com/orgs/serpapps/discussions/45)
+
+  - type: dropdown
     id: issue-category
     attributes:
       label: Which category best describes your problem?
@@ -38,7 +36,7 @@ body:
         - Linux
     validations:
       required: true
-      
+
   - type: dropdown
     id: browser
     attributes:
@@ -52,7 +50,15 @@ body:
         - Other
     validations:
       required: true
-      
+
+  - type: input
+    id: version
+    attributes:
+      label: "What version of the app are you using?"
+      description: "See how to find your version: https://github.com/serpapps/.github/discussions/6"
+    validations:
+      required: true
+
   - type: input
     id: webpage
     attributes:
@@ -60,14 +66,7 @@ body:
       placeholder: https://somewebsite.com/blog/post-1234567890
     validations:
       required: true
-      
-  - type: input
-    id: version
-    attributes:
-      label: "What version of the app are you using? This is how you find out: https://github.com/serpapps/.github/discussions/6"
-    validations:
-      required: true
-      
+
   - type: input
     id: video
     attributes:
@@ -75,12 +74,11 @@ body:
       placeholder: https://www.loom.com/share/b19b38d0ce2b44f5a049b871d9a38925
     validations:
       required: true
-        
+
   - type: textarea
     id: message
     attributes:
       label: Message
-      description: |
-        You message
+      description: "Your message"
     validations:
       required: true
