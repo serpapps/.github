@@ -1,0 +1,81 @@
+name: Close Issues with User Inactivity
+
+on:
+  workflow_call:
+    inputs:
+      days_before_close:
+        description: 'Number of days of user inactivity before closing issues'
+        required: false
+        default: 10
+        type: number
+      stale_issue_message:
+        description: 'Message to post when marking issues as stale due to user inactivity'
+        required: false
+        default: 'This issue has been automatically marked as stale because we have not received a response from the issue author for {{days-before-stale}} days. We are waiting for your input to continue helping you. If you are still experiencing this issue, please comment to keep it open. Otherwise, it will be closed automatically in a few days.'
+        type: string
+      close_issue_message:
+        description: 'Message to post when closing stale issues'
+        required: false
+        default: 'This issue has been automatically closed due to lack of response from the issue author. If you are still experiencing this issue, please feel free to reopen it or create a new issue with the requested information.'
+        type: string
+      exempt_issue_labels:
+        description: 'Comma-separated list of labels that exempt issues from being closed'
+        required: false
+        default: 'pinned,security,waiting-for-maintainer,under-investigation'
+        type: string
+      close_issue_reason:
+        description: 'Reason for closing the issue'
+        required: false
+        default: 'not_planned'
+        type: string
+    secrets:
+      GITHUB_TOKEN:
+        description: 'GitHub token with issue management permissions'
+        required: true
+
+jobs:
+  check-and-close-inactive:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Close issues with user inactivity
+        uses: actions/stale@v9
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          
+          # Configuration for issues only
+          days-before-stale: ${{ inputs.days_before_close }}
+          days-before-close: 1  # Close 1 day after marking as stale
+          
+          # Disable PR handling
+          days-before-pr-stale: -1
+          days-before-pr-close: -1
+          
+          # Messages
+          stale-issue-message: ${{ inputs.stale_issue_message }}
+          close-issue-message: ${{ inputs.close_issue_message }}
+          
+          # Labels and exemptions
+          stale-issue-label: 'stale-user-inactive'
+          exempt-issue-labels: ${{ inputs.exempt_issue_labels }}
+          
+          # Remove stale label when user responds
+          remove-stale-when-updated: true
+          
+          # Close issues with specified reason
+          close-issue-reason: ${{ inputs.close_issue_reason }}
+          
+          # Configuration to improve targeting
+          ascending: true
+          operations-per-run: 50
+          
+          # Only process issues that don't have recent activity from the author
+          # This helps ensure we're only closing when waiting for user response
+          ignore-updates: false
+          ignore-issue-updates: false
