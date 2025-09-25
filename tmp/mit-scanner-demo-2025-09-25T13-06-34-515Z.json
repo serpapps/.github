@@ -1,0 +1,24 @@
+{
+  "timestamp": "2025-09-25T13:06:34.515Z",
+  "orgName": "serpapps",
+  "maxRepos": 100,
+  "mitIndicators": [
+    "MIT License",
+    "Permission is hereby granted, free of charge",
+    "to deal in the Software without restriction",
+    "THE SOFTWARE IS PROVIDED \"AS IS\"",
+    "without warranty of any kind",
+    "MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT"
+  ],
+  "scannedRepos": [],
+  "mitLicenseFiles": [],
+  "deletionInstructions": [],
+  "errors": [],
+  "instructions": {
+    "step1": "Use github-mcp-server-search_repositories to get all repositories",
+    "step2": "For each repo, use github-mcp-server-get_file_contents to get root directory",
+    "step3": "Find LICENSE files and download their content",
+    "step4": "Analyze content with isMITLicense function",
+    "step5": "Generate deletion instructions for MIT licenses"
+  }
+}
