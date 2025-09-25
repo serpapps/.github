@@ -1,0 +1,72 @@
+{
+  "scannedRepos": [
+    {
+      "repoName": "ai-voice-cloner",
+      "licenseFiles": [
+        "LICENSE"
+      ],
+      "mitLicenseFiles": [],
+      "allFiles": [
+        {
+          "name": "LICENSE",
+          "type": "file",
+          "sha": "abc123"
+        },
+        {
+          "name": "README.md",
+          "type": "file",
+          "sha": "def456"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "repoName": "skool-downloader",
+      "licenseFiles": [],
+      "mitLicenseFiles": [],
+      "allFiles": [
+        {
+          "name": "README.md",
+          "type": "file",
+          "sha": "ghi789"
+        },
+        {
+          "name": "CHANGELOG.md",
+          "type": "file",
+          "sha": "jkl012"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "repoName": "vimeo-video-downloader",
+      "licenseFiles": [],
+      "mitLicenseFiles": [],
+      "allFiles": [
+        {
+          "name": "README.md",
+          "type": "file",
+          "sha": "mno345"
+        },
+        {
+          "name": "INSTALL-SETUP.md",
+          "type": "file",
+          "sha": "pqr678"
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "mitLicenseFiles": [],
+  "deletionInstructions": [],
+  "errors": [],
+  "timestamp": "2025-09-25T13:04:21.160Z",
+  "summary": {
+    "totalRepositories": 3,
+    "repositoriesWithLicenses": 1,
+    "repositoriesWithMitLicenses": 0,
+    "totalMitLicenseFiles": 0,
+    "totalErrors": 0
+  },
+  "maxRepos": 3
+}
