@@ -6,11 +6,11 @@ This is the official area for [SERP](https://serp.co/) software product releases
 
 Each product has it's own [repository](https://github.com/orgs/serpapps/repositories) for:
 
-1. **ISSUES**: Submit any issues related to support questions, bugs and feature suggestions in the `/issues` are of the relevant application's repository.
-2. **RELEASES**: Download the latest version of the application, read the full changelog of updates, access previous releases, and pre-releases if you want to try out the next version before it's official. These are located at the main repository URL + `/releases`
+1. **ISSUES**: Submit application specific problems, bugs, issues in the `/issues` area of the relevant application's repository.
+2. **RELEASES**: Download the latest version of the application or access previous releases and pre-releases in the repository's `/releases` area.
 3. [**DISCUSSIONS**](https://github.com/orgs/serpapps/discussions): This is the "help center" where you'll find answers to FAQs and help articles
 4. [**PROJECTS**](https://github.com/orgs/serpapps/projects): Follow along with development progress, view roadmaps and see what features are currently being worked on.
-5. **SUPPORT**: If you need help submit you can submit a general [SUPPORT ISSUE](https://github.com/serpapps/support/issues) here, or you can submit an issue for a specific application in the app's repository `/issues` area.
+5. **SUPPORT**: If you need general help, you can submit a [SUPPORT ISSUE](https://github.com/serpapps/support/issues) or you can [hop on SERP Chat directly with this link](https://serp.ly/@serp/support)
 
 We also have a free community called [SERP University](https://serp.ly/@serp/community) you can join to connect with the SERP team, other users, discuss features, share tips, etc. This is not a "support forum" so do not post your support-related questions here.
 
