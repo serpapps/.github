@@ -25,7 +25,7 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm install @octokit/rest
+        run: npm install @octokit/rest@20.1.2
 
       - name: Distribute feature files
         env:
