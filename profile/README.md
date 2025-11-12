@@ -26,7 +26,7 @@ We also have a free community called [SERP University](https://serp.ly/@serp/com
 
 ---
 
-## about downloaders
+## About our apps
 
 There are alot of places online to upload your work, and even more [file formats](https://serptools.github.io/files/) you could publish your creations in.
 
@@ -51,6 +51,9 @@ We hope that you will use them to save the content you worked so hard to create,
 Use these downloaders on your own content, that you have rights to. 
 
 And be a proprietor of good  buggery... I mean buffoonery!
+
+And in all seriousness, all of our tools are designed to be used legally and for authorized purposes only. That said, believe users should have real control over the software they use — including how, when, and how fast they use it — without unnecessary restrictions or corporate gatekeeping. Our goal is to empower responsible creators, not to censor or dictate what you can build or save. We trust our users to act ethically and within the law while enjoying the flexibility our tools provide.
+
 
 ---
 
