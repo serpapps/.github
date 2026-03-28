@@ -1,0 +1,24 @@
+name: Close Issues with User Inactivity
+
+on:
+  schedule:
+    # Run daily at 2 AM UTC to check for inactive issues
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      days_before_close:
+        description: 'Days of user inactivity before closing'
+        required: false
+        default: '10'
+        type: string
+
+jobs:
+  close-inactive:
+    uses: serpapps/.github/.github/workflows/close-inactive-issues.yml@main
+    with:
+      days_before_close: ${{ github.event.inputs.days_before_close && fromJSON(github.event.inputs.days_before_close) || 10 }}
+      stale_issue_message: 'This issue has been automatically marked as stale because we have not received a response from you for {{days-before-stale}} days. We are waiting for your input to continue helping you. If you are still experiencing this issue, please comment to keep it open. Otherwise, it will be closed automatically tomorrow.'
+      close_issue_message: 'This issue has been automatically closed due to lack of response from the issue author. If you are still experiencing this issue, please feel free to reopen it or create a new issue with the requested information.'
+      exempt_issue_labels: 'pinned,security,waiting-for-maintainer,under-investigation,enhancement'
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,7 @@
+{
+  "name": "call-close-inactive-issues",
+  "description": "Automatically close issues with user inactivity after 10 days",
+  "iconName": "issue-closed",
+  "categories": ["automation", "issues"],
+  "filePatterns": ["*.md", "README.md"]
+}
