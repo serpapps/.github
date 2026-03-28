@@ -26,8 +26,10 @@ For manual control or troubleshooting, use the `distribute-features-manual.js` s
 
 ### Prerequisites:
 ```bash
-npm install @octokit/rest
+npm install @octokit/rest@20.1.2
 ```
+
+**Note:** Version 20.1.2 is required for CommonJS compatibility. Newer versions (22.0.0+) are ES modules only.
 
 ### Set up GitHub token:
 ```bash
