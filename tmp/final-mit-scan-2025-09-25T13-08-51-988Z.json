@@ -1,0 +1,50 @@
+{
+  "timestamp": "2025-09-25T13:08:51.988Z",
+  "orgName": "serpapps",
+  "maxRepos": 5,
+  "summary": {
+    "totalRepositories": 5,
+    "repositoriesChecked": 5,
+    "repositoriesWithLicenses": 1,
+    "repositoriesWithMitLicenses": 0,
+    "totalMitLicenseFiles": 0,
+    "totalErrors": 0
+  },
+  "processedRepos": [
+    {
+      "repoName": "skool-downloader",
+      "licenseFiles": [],
+      "mitLicenseFiles": [],
+      "errors": []
+    },
+    {
+      "repoName": "vimeo-video-downloader",
+      "licenseFiles": [],
+      "mitLicenseFiles": [],
+      "errors": []
+    },
+    {
+      "repoName": "loom-video-downloader",
+      "licenseFiles": [],
+      "mitLicenseFiles": [],
+      "errors": []
+    },
+    {
+      "repoName": "ai-voice-cloner",
+      "licenseFiles": [
+        "LICENSE"
+      ],
+      "mitLicenseFiles": [],
+      "errors": []
+    },
+    {
+      "repoName": "udemy-video-downloader",
+      "licenseFiles": [],
+      "mitLicenseFiles": [],
+      "errors": []
+    }
+  ],
+  "mitLicenseFiles": [],
+  "totalRepos": 5,
+  "errors": []
+}

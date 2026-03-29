@@ -1,0 +1,40 @@
+{
+  "timestamp": "2025-09-25T13:03:07.860Z",
+  "sampleSize": "2",
+  "processedRepos": [
+    {
+      "repoName": "ai-voice-cloner",
+      "licenseFiles": [
+        "LICENSE"
+      ],
+      "mitLicenseFiles": [],
+      "licenseAnalysis": [
+        {
+          "fileName": "LICENSE",
+          "isMIT": false,
+          "confidence": 0,
+          "foundIndicators": [],
+          "indicatorCount": 0,
+          "contentPreview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/..."
+        }
+      ],
+      "errors": []
+    },
+    {
+      "repoName": "skool-downloader",
+      "licenseFiles": [],
+      "mitLicenseFiles": [],
+      "licenseAnalysis": [],
+      "errors": []
+    }
+  ],
+  "mitLicenseFiles": [],
+  "errors": [],
+  "summary": {
+    "totalRepositories": 2,
+    "repositoriesWithLicenses": 1,
+    "repositoriesWithMitLicenses": 0,
+    "totalMitLicenseFiles": 0,
+    "totalErrors": 0
+  }
+}
