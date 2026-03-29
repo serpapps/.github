@@ -1,6 +1,6 @@
-# Feature Distribution Tools
+# Repository Management Tools
 
-This directory contains tools to distribute the feature files from `/research/` to their respective repositories.
+This directory contains tools to manage files across all serpapps repositories, including feature distribution and license management.
 
 ## Automated Distribution (GitHub Action)
 
@@ -81,3 +81,36 @@ features:
 ```
 
 This format is compatible with the existing `generate-readme.js` script for automatic README generation.
+
+## LICENSE File Management
+
+### Delete LICENSE Files
+
+The `delete-license-files.js` script removes LICENSE files from all serpapps repositories.
+
+#### Prerequisites:
+- GitHub CLI (`gh`) installed and authenticated
+- Appropriate permissions to modify serpapps repositories
+
+#### Usage:
+```bash
+# Dry run to preview what would be deleted
+node scripts/delete-license-files.js --dry-run
+
+# Delete LICENSE files from all repositories
+node scripts/delete-license-files.js
+
+# Delete LICENSE files from a specific repository only
+node scripts/delete-license-files.js --repo=youtube-downloader
+```
+
+#### What it does:
+- Searches for common LICENSE file patterns (LICENSE, LICENSE.md, LICENSE.txt, etc.)
+- Deletes found LICENSE files from all serpapps repositories
+- Provides detailed logging and error handling
+- Supports dry-run mode for safety
+
+#### Common LICENSE patterns detected:
+- `LICENSE`, `LICENSE.md`, `LICENSE.txt`, `LICENSE.rst`
+- `LICENCE`, `LICENCE.md`, `LICENCE.txt`
+- Various case variations (license, License, etc.)
