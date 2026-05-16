@@ -41,6 +41,19 @@ And in all seriousness, all of our tools are designed to be used legally and for
   <summary>△ ▽</summary>
 
 
+// CONTRIBUTORS
+
+- https://github.com/devinschumacher
+- https://github.com/serp-y
+
+// ORGS
+
+- https://github.com/serpapps
+- https://github.com/serpdownloaders
+- https://github.com/howtodownloadvideos
+- https://github.com/serpxxx
+- https://github.com/browserextensionsio
+
 
 // DOWNLOADERS
 
@@ -120,17 +133,5 @@ And in all seriousness, all of our tools are designed to be used legally and for
 - https://github.com/serpapps/youporn-downloader
 - https://github.com/serpapps/youtube-downloader
 
-
-// CONTRIBUTORS
-
-- https://github.com/devinschumacher
-- https://github.com/serp-y
-
-// ORGS
-
-- https://github.com/serpapps
-- https://github.com/serpdownloaders
-- https://github.com/howtodownloadvideos
-- https://github.com/serpxxx
 
 </details>
