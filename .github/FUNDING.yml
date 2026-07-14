@@ -1,8 +1,8 @@
-github: [devinschumacher]
+github: [devinschumacher, serp-y]
 open_collective: devinschumacher
 custom: [
 "https://apps.serp.co",
 "https://serp.co",
+"https://extensions.serp.co"
 "https://devinschumacher.com",
-"https://addons.mozilla.org/en-US/firefox/user/19256633/"
 ]
